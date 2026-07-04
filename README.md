@@ -17,6 +17,9 @@ A program designed to generate Charachorder libraries with support for languages
 - **Rich configuration options** for fine-tuning behavior
 
 # Getting Started
+## Download
+Go through the [releases](https://github.com/Hedgehogo/chord-distributor/releases) and download the latest version of the program.
+
 ## Morphological Dictionary
 Obtain the Unimorph morphological dictionary for your language. It will most likely be available at: `https://github.com/unimorph/<your-lang-code>/blob/master/<your-lang-code>.segmentations.zip`. For example, for French: https://github.com/unimorph/fra/blob/master/fra.segmentations. 
 
