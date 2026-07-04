@@ -73,4 +73,4 @@ Create a settings.json file with the following content:
 ```
 
 ## Running
-Open a terminal and run `chord_distributor.exe`. Once the program finishes (with the default settings, this should take about 4 minutes), the files `chords.json` and `chords.txt` will appear in the folder. The JSON file can be uploaded at https://charachorder.io/config/chords/. The TXT file provides a human-readable overview of the generated chords and their mappings.
+Open a terminal and run `./chord_distributor.exe`. Once the program finishes (with the default settings, this should take about 4 seconds), the files `chords.json` and `chords.txt` will appear in the folder. The JSON file can be uploaded at https://charachorder.io/config/chords/. The TXT file provides a human-readable overview of the generated chords and their mappings.
