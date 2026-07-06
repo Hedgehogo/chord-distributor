@@ -5,13 +5,13 @@ The file contains the following fields:
 - `distributor` (required) — settings related to chord allocation between bases.
 - `generator` — settings related to chord generation and evaluation for each individual base.
 
-# `distributor`
+## `distributor`
 Chord distribution uses a **sliding window** approach. The window moves from the top of the base list to the bottom. It covers a certain number of bases at a time, solves their allocation optimally, then shifts down by a fixed step, fixes the chords that have exited the window, and repeats.
 
 The `distributor` section contains the following fields:
 - `window_size` — the number of bases covered in one pass. This value should not exceed `top_count`, though it is not strictly forbidden. Larger values improve solution quality but increase processing time.
 - `window_pitch` — the step by which the window moves down. Must not exceed `window_size`. Smaller values improve solution quality but increase processing time.
-- `fixed_chords` — a mapping from bases to manually assigned chords (e.g., "ли": "л\d").
+- `fixed_chords` — a mapping from bases to manually assigned chords (e.g., "ли": "л\\d").
 - `forbidden_chords` — a list of chords that are forbidden for any base assignment.
 
 If you set `window_size` and `window_pitch` to one, then the bases will simply receive the first of the remaining best chords in order.
@@ -24,7 +24,7 @@ Example with all fields filled:
 		"window_size": 100,
 		"window_pitch": 50,
 		"fixed_chords": {
-			"ли": "л\d"
+			"ли": "л\\d"
 		},
 		"forbidden_chords": [
 			"от"
@@ -33,7 +33,7 @@ Example with all fields filled:
 }
 ```
 
-# `generator`
+## `generator`
 The `generator` section contains the following fields:
 - `length_limit` (default: `8`) — maximum base length processed by the generator. If exceeded, extra letters are truncated. Larger values increase processing time.
 - `half_penalty` (default: `1.5`) — the penalty threshold at which a chord becomes half as good as one that preserves a fully memorable and ergonomic letter set. In other words, how many ideal letters you are willing to lose before the chord quality is reduced by half.
