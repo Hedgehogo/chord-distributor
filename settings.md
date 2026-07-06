@@ -9,8 +9,8 @@ The file contains the following fields:
 Chord distribution uses a **sliding window** approach. The window moves from the top of the base list to the bottom. It covers a certain number of bases at a time, solves their allocation optimally, then shifts down by a fixed step, fixes the chords that have exited the window, and repeats.
 
 The `distributor` section contains the following fields:
-- `window_size` — the number of bases covered in one pass. This value should not exceed `top_count`, though it is not strictly forbidden. Larger values improve solution quality but increase processing time.
-- `window_pitch` — the step by which the window moves down. Must not exceed `window_size`. Smaller values improve solution quality but increase processing time.
+- `window_size` (required) — the number of bases covered in one pass. This value should not exceed `top_count`, though it is not strictly forbidden. Larger values improve solution quality but increase processing time.
+- `window_pitch` (required) — the step by which the window moves down. Must not exceed `window_size`. Smaller values improve solution quality but increase processing time.
 - `fixed_chords` — a mapping from bases to manually assigned chords (e.g., "ли": "л\\d").
 - `forbidden_chords` — a list of chords that are forbidden for any base assignment.
 
