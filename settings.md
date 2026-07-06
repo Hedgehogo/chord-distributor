@@ -36,7 +36,7 @@ Example with all fields filled:
 ## `generator`
 The `generator` section contains the following fields:
 - `length_limit` (default: `8`) — maximum base length processed by the generator. If exceeded, extra letters are truncated. Larger values increase processing time.
-- `half_penalty` (default: `1.5`) — the penalty threshold at which a chord becomes half as good as one that preserves a fully memorable and ergonomic letter set. In other words, how many ideal letters you are willing to lose before the chord quality is reduced by half.
+- `half_penalty` (default: `1.5`) — the penalty threshold at which the chord weight drops to half. It defines how many ideally mnemonic and ergonomic letters you are willing to lose before the chord becomes twice as bad as one that preserves them.
 - `mnemonic_preference` (default: `0.5`) — coefficient balancing mnemonics vs. ergonomics, where:
   - `0.0` — only ergonomics matters
   - `1.0` — only mnemonics matters
