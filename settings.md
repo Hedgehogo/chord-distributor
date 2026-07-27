@@ -4,6 +4,13 @@ The file contains the following fields:
 - `top_count` (required) — the number of top bases (simplified: the most frequent) to include in the distribution.
 - `distributor` (required) — settings related to chord allocation between bases.
 - `generator` — settings related to chord generation and evaluation for each individual base.
+- `space_bonus` (default: `0.7`) — the proportion of spaces that is entered automatically on average between chords, where:
+  - `0.0` — chords don't add spaces
+  - `1.0` — all spaces are placed between chords and are never entered manually (perfect case)
+- `non_chorded` (default: `0.1`) — the percentage of characters that cannot be entered by chords (punctuation marks, special characters, words missing from the input dictionaries), where:
+  - `0.0` — there are no such symbols (perfect case)
+  - `1.0` — the number of such symbols is equal to the number of chorded ones
+- `allow_upper_case` (default: `false`) — whether to include words containing capital letters in the list of potentially chordable ones. It is useful if you are deciding whether to give chords to proper names.
 
 ## `distributor`
 Chord distribution uses a **sliding window** approach. The window moves from the top of the base list to the bottom. It covers a certain number of bases at a time, solves their allocation optimally, then shifts down by a fixed step, fixes the chords that have exited the window, and repeats.
