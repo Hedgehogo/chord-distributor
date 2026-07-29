@@ -20,28 +20,9 @@ A program designed to generate Charachorder libraries with support for languages
 ## Download
 Go through the [releases](https://github.com/Hedgehogo/chord-distributor/releases) and download the latest version of the program.
 
-## Morphological Dictionary
-Obtain the Unimorph morphological dictionary for your language. It will most likely be available at: `https://github.com/unimorph/<your-lang-code>/blob/master/<your-lang-code>.segmentations.zip`. For example, for French: https://github.com/unimorph/fra/blob/master/fra.segmentations. 
-
-Please note that these dictionaries may contain systematic errors. To fix them, we recommend using an editor with regex support. If you correct the dictionary, please consider publishing it and mentioning it in the discussion.
-
-Place the file in the program folder under the name forms.tsv.
-
-## Frequency Dictionary
-Obtain the AOSP frequency dictionary for your language. It will most likely be available at: `https://github.com/AnySoftKeyboard/AnySoftKeyboard/blob/main/addons/languages/<your-lang-name>/pack/dictionary/<your-lang-code>_wordlist.combined.gz`. For example, for French: https://github.com/AnySoftKeyboard/AnySoftKeyboard/blob/main/addons/languages/french/pack/dictionary/fr_wordlist.combined.gz.
-
-Place the file in the program folder under the name forms.combined.
-
-## Letters
-Create a file named `letters.tsv`. Each line must contain a single letter of your language’s alphabet, followed by a tab character and its memorability score (from `0.0` to `1.0`).
-
-Example:
-```
-a	0.1
-b	0.5
-```
-
 ## Morphemes
+If there is no archive with your language’s tag in this repository, you will need to follow the steps below. If one exists, you can skip ahead to the next section.
+
 Create a file named `formants.tsv`.
 
 Each line contains a list of formants, a chord, and a list of tags, separated by tab characters.
@@ -50,7 +31,7 @@ A **formant** is a sequence of morphemes assigned a specific chord. To write a f
 
 A **chord** is written simply as a sequence of base-layer letters required for the chord. To include **Space**, **Repeat Last Note**, `-`, or `\` in the chord, use `\s`, `\d`, `\-`, or `\\`, respectively. Letters in the chord must not repeat. If you write `-` instead of a chord, it will be generated from the first formant, but only if it consists of a single morpheme.
 
-The **tags** list must include the set of parts of speech this formant applies to. Tags are separated by `|`, e.g., `N|ADJ`. Supported parts of speech include: `N`, `PROPN`, `ADJ`, `PRO`, `CLF`, `ART`, `DET`, `V`, `ADV`, `AUX`, `V.PTCP`, `V.MSDR`, `V.CVB`, `ADP`, `COMP`, `CONJ`, `NUM`, `PART`, and `INTJ`. For more details, refer to the Unimorph documentation.
+The **tags** list must include the set of parts of speech this formant applies to. Tags are separated by `|`, e.g., `N|ADJ`. Supported parts of speech include: `N`, `PROPN`, `ADJ`, `PRO`, `CLF`, `ART`, `DET`, `V`, `ADV`, `AUX`, `V.PTCP`, `V.MSDR`, `V.CVB`, `ADP`, `COMP`, `CONJ`, `NUM`, `PART`, and `INTJ`. For more details, refer to the [Unimorph](https://unimorph.github.io/schema/) documentation.
 
 Additionally, you can add the tags `LEM`, `FST`, or `CFL` (separated by `;`). These indicate that the formant applies only to the base form of a word, can only be used as the first formant in a chain, or that its chord cannot be reused for words.
 
@@ -63,19 +44,18 @@ Fill the file with all required morphemes as described. The final result should 
 ть;ти;чь;чи	-	V;LEM;FST
 ```
 
-## Configuration
-Create a settings.json file with the following content:
-```
-{
-	"top_count": 500,
-	"distributor": {
-		"window_size": 100,
-		"window_pitch": 50,
-	}
-}
-```
-
-You can find out more about the settings [here](./settings.md).
-
 ## Running
 Open a terminal and run `./chord_distributor.exe` (Don't forget to enable the layout you need!). Once the program finishes (with the default settings, this should take about 4 seconds), the files `chords.json` and `chords.txt` will appear in the folder. The JSON file can be uploaded at https://charachorder.io/config/chords/. The TXT file provides a human-readable overview of the generated chords and their mappings.
+
+# Advanced
+## Configuration
+You can find out more about the settings [here](./settings.md).
+
+## Letters
+You can manually create the `letters.tsv` file. Each line must contain a single letter of your language’s alphabet, followed by a tab character and its memorability score (from `0.0` to `1.0`). **Memorability** refers to how much the average word becomes less recognizable when you remove this letter from it. Essentially, it tells the generator how valuable this letter is, regardless of its position on your keyboard.
+
+Example:
+```
+a	0.1
+b	0.5
+```
