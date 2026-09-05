@@ -4,13 +4,14 @@ The file contains the following fields:
 - `top_count` (required) — the number of top bases (simplified: the most frequent) to include in the distribution.
 - `distributor` (required) — settings related to chord allocation between bases.
 - `generator` — settings related to chord generation and evaluation for each individual base.
+- `linguistic` — settings related to the preprocessing of linguistic data (input dictionaries).
 - `space_bonus` (default: `0.7`) — the proportion of spaces that is entered automatically on average between chords, where:
   - `0.0` — chords don't add spaces
   - `1.0` — all spaces are placed between chords and are never entered manually (perfect case)
 - `non_chorded` (default: `0.1`) — the percentage of characters that cannot be entered by chords (punctuation marks, special characters, words missing from the input dictionaries), where:
   - `0.0` — there are no such symbols (perfect case)
   - `1.0` — the number of such symbols is equal to the number of chorded ones
-- `allow_upper_case` (default: `false`) — whether to include words containing capital letters in the list of potentially chordable ones. It is useful if you are deciding whether to give chords to proper names.
+- `lang` (default: null) — the language for which you are generating the dictionary, the value is specified as a string containing the language tag.
 
 ## `distributor`
 Chord distribution uses a **sliding window** approach. The window moves from the top of the base list to the bottom. It covers a certain number of bases at a time, solves their allocation optimally, then shifts down by a fixed step, fixes the chords that have exited the window, and repeats.
@@ -43,7 +44,19 @@ Example with all fields filled:
 ## `generator`
 The `generator` section contains the following fields:
 - `length_limit` (default: `8`) — maximum base length processed by the generator. If exceeded, extra letters are truncated. Larger values increase processing time.
+- `chords_limit` (default: `32`) — the maximum number of potential chords generated per one base.
 - `half_penalty` (default: `1.5`) — the penalty threshold at which the chord weight drops to half. It defines how many ideally mnemonic and ergonomic letters you are willing to lose before the chord becomes twice as bad as one that preserves them.
 - `mnemonic_preference` (default: `0.5`) — coefficient balancing mnemonics vs. ergonomics, where:
   - `0.0` — only ergonomics matters
   - `1.0` — only mnemonics matters
+
+## `linguistic`
+The `linguistic` section contains the following fields:
+- `mode` (default: `"smart"`) — mode that determines how to derive bases from words, where:
+  - `"by_form"` — gives each word form its own base
+  - `"by_form_grouped"` — gives each word form its own base, but all word forms coexist in the top list, and it is also guaranteed that if at least one word form is included in the top list, the others will also be included
+  - `"by_base"` — groups word forms into a single base, where all forms except the main one (the most popular one) are achieved through compound chords
+  - `"smart"` — works the same way as `"by_base"`, but it can retrieve some forms from the base and give them its own base if it believes this will yield better results
+- `allow_upper_case` (default: `false`) — whether to include words containing capital letters in the list of potentially chordable ones. It is useful if you are deciding whether to give chords to proper names
+- `forbidden_forms` — list of words that should be excluded from the included dictionaries
+- `split_threshold` (default: `0.0025`) — minimum contribution share to the final speedup must be provided by the form in order for it to be considered that moving it to `"smart"` mode will improve the result. To put it bluntly, it’s the proportion of words in the text that this word constitutes, multiplied by the average word length in the language.
