@@ -45,7 +45,7 @@ Fill the file with all required morphemes as described. The final result should 
 ```
 
 ## Running
-Open a terminal and run `./chord_distributor.exe` (Don't forget to enable the layout you need!). Once the program finishes (with the default settings, this should take about 4 seconds), the files `chords.json` and `chords.txt` will appear in the folder. The JSON file can be uploaded at https://charachorder.io/config/chords/. The TXT file provides a human-readable overview of the generated chords and their mappings.
+Run `./chord_distributor.exe` (Or a file with a similar name that you downloaded from [Releases](https://github.com/Hedgehogo/chord-distributor/releases)). When you click the `Save` button after the generation is complete, the file `chords.json` will appear in the folder. The JSON file can be uploaded at https://charachorder.io/config/chords/.
 
 # Advanced
 ## Configuration
