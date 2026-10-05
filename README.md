@@ -20,6 +20,13 @@ A program designed to generate Charachorder libraries with support for languages
 ## Download
 Go through the [releases](https://github.com/Hedgehogo/chord-distributor/releases) and download the latest version of the program.
 
+## Running
+Run `./chord_distributor.exe` (Or a file with a similar name that you downloaded from [Releases](https://github.com/Hedgehogo/chord-distributor/releases)). Errors may appear during operation, some are related to errors in the data, some you can fix by adding a formant. It is not necessary to fix all the errors, but if the error is not fixed, then what is mentioned in it will be excluded from the data for this run. When you click the `Save` button after the generation is complete, the file `chords.json` will appear in the folder. The JSON file can be uploaded at https://charachorder.io/config/chords/. 
+
+# Advanced
+## Configuration
+You can find out more about the settings [here](./settings.md).
+
 ## Morphemes
 If there is no archive with your language’s tag in this repository, you will need to follow the steps below. If one exists, you can skip ahead to the next section.
 
@@ -43,13 +50,6 @@ Fill the file with all required morphemes as described. The final result should 
 л|и	ли	V;CFL
 ть;ти;чь;чи	-	V;LEM;FST
 ```
-
-## Running
-Run `./chord_distributor.exe` (Or a file with a similar name that you downloaded from [Releases](https://github.com/Hedgehogo/chord-distributor/releases)). When you click the `Save` button after the generation is complete, the file `chords.json` will appear in the folder. The JSON file can be uploaded at https://charachorder.io/config/chords/.
-
-# Advanced
-## Configuration
-You can find out more about the settings [here](./settings.md).
 
 ## Letters
 You can manually create the `letters.tsv` file. Each line must contain a single letter of your language’s alphabet, followed by a tab character and its memorability score (from `0.0` to `1.0`). **Memorability** refers to how much the average word becomes less recognizable when you remove this letter from it. Essentially, it tells the generator how valuable this letter is, regardless of its position on your keyboard.
