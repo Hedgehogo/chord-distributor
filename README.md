@@ -31,7 +31,7 @@ You can find out more about the settings [here](./settings.md).
 If the repository does not have an archive with a tag of your language, or you want to adapt the morphology analysis for yourself, you can manually edit the `formants.tsv` file, although it is preferable if possible to use the GUI built into the application.
 
 If the file `formants.tsv` does not exist, create it in the same folder where the program is located.
-ё
+
 Each line contains a list of formants, a chord, and a list of tags, separated by tab characters.
 
 A **formant** is a sequence of morphemes assigned a specific chord. To write a formant, list its morphemes separated by `|`, e.g., `л|а`. Multiple formants can be combined by separating them with `;`, e.g., `ть;ти`. The first morpheme in will be considered a canonical notation, this affects the generation of chords.
