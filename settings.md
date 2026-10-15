@@ -49,7 +49,7 @@ The `generator` section contains the following fields:
 - `mnemonic_preference` (default: `0.5`) — coefficient balancing mnemonics vs. ergonomics, where:
   - `0.0` — only ergonomics matters
   - `1.0` — only mnemonics matters
-- `replacers` (default: `[["\\d", 1.0], ["\\>d", 1.0]]`) — list of keys that can be used as replacements for deleted ones or to achieve the minimum required chord length. Each element is a list, in which the first element is a key, and the second is its weight. The higher the weight, the more often the generator will decide that this substitute should be added.
+- `replacers` (default: `[["\\d", 1.0], ["\\>d", 1.0]]`) — list of keys that can be used as replacements for deleted ones or to achieve the minimum required chord length. Each element is a list, in which the first element is a key, and the second is its weight. The higher the weight, the more often the generator will decide that this replacer should be added.
 
 ## `linguistic`
 The `linguistic` section contains the following fields:
