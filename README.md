@@ -36,7 +36,7 @@ Each line contains a list of formants, a chord, and a list of tags, separated by
 
 A **formant** is a sequence of morphemes assigned a specific chord. To write a formant, list its morphemes separated by `|`, e.g., `л|а`. Multiple formants can be combined by separating them with `;`, e.g., `ть;ти`. The first morpheme in will be considered a canonical notation, this affects the generation of chords.
 
-A **chord** is written simply as a sequence of base-layer letters required for the chord. To include **Space**, **Repeat Last Note**, `-`, or `\` in the chord, use `\s`, `\d`, `\-`, or `\\`, respectively. Letters in the chord must not repeat. If you write `-` instead of a chord, it will be generated from the first formant, but only if it consists of a single morpheme.
+A **chord** is written simply as a sequence of base-layer letters required for the chord. To include **Space**, **Repeat Last Note**, **Repeat Last Note (Right)**, `-`, or `\` in the chord, use `\s`, `\d`, `\>d`, `\-`, or `\\`, respectively. Letters in the chord must not repeat. If you write `-` instead of a chord, it will be generated from the first formant, but only if it consists of a single morpheme.
 
 The **tags** list must include the set of parts of speech this formant applies to. Tags are separated by `|`, e.g., `N|ADJ`. Supported parts of speech include: `N`, `PROPN`, `ADJ`, `PRO`, `CLF`, `ART`, `DET`, `V`, `ADV`, `AUX`, `V.PTCP`, `V.MSDR`, `V.CVB`, `ADP`, `COMP`, `CONJ`, `NUM`, `PART`, and `INTJ`. For more details, refer to the [Unimorph](https://unimorph.github.io/schema/) documentation.
 
