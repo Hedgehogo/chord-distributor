@@ -21,7 +21,7 @@ A program designed to generate Charachorder libraries with support for languages
 Go through the [releases](https://github.com/Hedgehogo/chord-distributor/releases) and download the latest version of the program.
 
 ## Running
-Run `./chord_distributor.exe` (Or a file with a similar name that you downloaded from [Releases](https://github.com/Hedgehogo/chord-distributor/releases)). Errors may appear during operation, some are related to errors in the data, some you can fix by adding a formant. It is not necessary to fix all the errors, but if the error is not fixed, then what is mentioned in it will be excluded from the data for this run. When you click the `Save` button after the generation is complete, the file `chords.json` will appear in the folder. The JSON file can be uploaded at https://charachorder.io/config/chords/. 
+Run `./chord_distributor.exe` (Or a file with a similar name that you downloaded from [Releases](https://github.com/Hedgehogo/chord-distributor/releases)). On the first launch, the program can download dictionaries, just give it time, it shouldn't take more than 5 minutes. Errors may appear during operation, some are related to errors in the data, some you can fix by adding a formant. It is not necessary to fix all the errors, but if the error is not fixed, then what is mentioned in it will be excluded from the data for this run. When you click the `Save` button after the generation is complete, the file `chords.json` will appear in the folder. The JSON file can be uploaded at https://charachorder.io/config/chords/.
 
 # Advanced
 ## Configuration
